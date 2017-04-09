@@ -1,0 +1,14 @@
+[Unit]
+Description=sense garage door status
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/garage_door
+Environment="PATH=/home/pi/garage_door/venv/bin"
+Environment="FLASK_APP=web.py"
+ExecStart=/home/pi/garage_door/venv/bin/flask run --host=0.0.0.0
+
+[Install]
+WantedBy=multi-user.target
